@@ -1,0 +1,49 @@
+{
+  "name": "gain",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "dueDate": {
+      "type": "date"
+    },
+    "paymentDate": {
+      "type": "date"
+    },
+    "devis": {
+      "type": "boolean",
+      "default": false
+    },
+    "invoiced": {
+      "type": "boolean",
+      "default": false
+    },
+    "paid": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "project": {
+      "type": "belongsTo",
+      "model": "Project",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,31 @@
+{
+  "name": "ProjectClient",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "project": {
+      "type": "belongsTo",
+      "model": "Project",
+      "foreignKey": ""
+    },
+    "client": {
+      "type": "belongsTo",
+      "model": "Client",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}

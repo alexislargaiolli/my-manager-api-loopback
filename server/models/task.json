@@ -1,0 +1,38 @@
+{
+  "name": "Task",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "state": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {
+    "project": {
+      "type": "belongsTo",
+      "model": "Project",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}
