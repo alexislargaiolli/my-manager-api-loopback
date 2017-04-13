@@ -1,5 +1,5 @@
 {
-  "name": "gain",
+  "name": "Gain",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

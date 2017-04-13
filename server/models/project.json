@@ -33,16 +33,36 @@
   },
   "validations": [],
   "relations": {
-    "user": {
-      "type": "belongsTo",
-      "model": "User",
-      "foreignKey": ""
-    },
     "clients": {
       "type": "hasMany",
       "model": "Client",
       "foreignKey": "",
       "through": "ProjectClient"
+    },
+    "notes": {
+      "type": "hasMany",
+      "model": "Note",
+      "foreignKey": "projectId"
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "MMUser",
+      "foreignKey": "userId"
+    },
+    "gains": {
+      "type": "hasMany",
+      "model": "Gain",
+      "foreignKey": "projectId"
+    },
+    "historyEntries": {
+      "type": "hasMany",
+      "model": "HistoryEntry",
+      "foreignKey": "projectId"
+    },
+    "tasks": {
+      "type": "hasMany",
+      "model": "Task",
+      "foreignKey": "projectId"
     }
   },
   "acls": [
@@ -57,13 +77,6 @@
       "principalType": "ROLE",
       "principalId": "$owner",
       "permission": "ALLOW"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW",
-      "property": "create"
     },
     {
       "accessType": "WRITE",

@@ -1,0 +1,44 @@
+{
+  "name": "MMUser",
+  "base": "User",
+  "properties": {
+    "firstname": {
+      "type": "string",
+      "required": false,
+      "default": "test"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "projects": {
+      "type": "hasMany",
+      "model": "Project",
+      "foreignKey": "userId"
+    },
+    "notes": {
+      "type": "hasMany",
+      "model": "Note",
+      "foreignKey": "userId"
+    },
+    "clients": {
+      "type": "hasMany",
+      "model": "Client",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

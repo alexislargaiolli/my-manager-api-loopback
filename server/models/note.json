@@ -21,10 +21,10 @@
   },
   "validations": [],
   "relations": {
-    "project": {
+    "user": {
       "type": "belongsTo",
-      "model": "Project",
-      "foreignKey": ""
+      "model": "MMUser",
+      "foreignKey": "userId"
     }
   },
   "acls": [
@@ -33,6 +33,18 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}

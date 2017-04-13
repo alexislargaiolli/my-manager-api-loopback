@@ -3,11 +3,15 @@ module.exports = function(app) {
   app.dataSources.mysql.automigrate('ACL');
   app.dataSources.mysql.automigrate('RoleMapping');
   app.dataSources.mysql.automigrate('Role');
+  app.dataSources.mysql.automigrate('Note');
+  app.dataSources.mysql.automigrate('Gain');
+  app.dataSources.mysql.automigrate('HistoryEntry');
+  app.dataSources.mysql.automigrate('Task');
 
-  app.dataSources.mysql.automigrate('User', function(err) {
+  app.dataSources.mysql.automigrate('MMUser', function(err) {
     if (err) throw err;
 
-    app.models.User.create({
+    app.models.MMUser.create({
       username: 'test',
       email:"test@test.fr",
       password: "password",
@@ -38,10 +42,12 @@ module.exports = function(app) {
       app.dataSources.mysql.automigrate('Client', function(err) {
         if (err) throw err;
         app.models.Client.create([{
-          name : "WeAreLearning"
+          name : "WeAreLearning",
+          user: user
         },
         {
-          name : "Freeness"
+          name : "Freeness",
+          user: user
         }], function(err, clients) {
           if (err) throw err;
           console.log('Models created: \n', clients);
