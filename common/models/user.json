@@ -38,7 +38,45 @@
       "principalType": "ROLE",
       "principalId": "$owner",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "totalPaidGain"
     }
   ],
-  "methods": {}
+  "methods": {
+    "prototype.totalPaidGain": {
+      "accepts": [
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "paid",
+          "type": "number"
+        },
+        {
+          "arg": "invoiced",
+          "type": "number"
+        },
+        {
+          "arg": "potential",
+          "type": "number"
+        }
+      ],
+      "description": "Return the total pain gain for a given user",
+      "http": [
+        {
+          "path": "gains/total",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

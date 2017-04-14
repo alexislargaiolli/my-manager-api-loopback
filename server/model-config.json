@@ -73,9 +73,5 @@
   "ProjectClient": {
     "dataSource": "mysql",
     "public": false
-  },
-  "appuser": {
-    "dataSource": "mysql",
-    "public": true
   }
 }

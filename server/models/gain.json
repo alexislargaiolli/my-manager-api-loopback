@@ -10,6 +10,9 @@
       "type": "string",
       "required": true
     },
+    "budget": {
+      "type": "number"
+    },
     "dueDate": {
       "type": "date"
     },
