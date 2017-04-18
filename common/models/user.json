@@ -1,96 +1,83 @@
 {
-  "name": "MMUser",
-  "base": "User",
-  "properties": {
-    "firstname": {
-      "type": "string",
-      "required": false,
-      "default": "test"
-    }
-  },
-  "validations": [],
-  "relations": {
-    "projects": {
-      "type": "hasMany",
-      "model": "Project",
-      "foreignKey": "userId"
-    },
-    "notes": {
-      "type": "hasMany",
-      "model": "Note",
-      "foreignKey": "userId"
-    },
-    "clients": {
-      "type": "hasMany",
-      "model": "Client",
-      "foreignKey": "userId"
-    }
-  },
-  "acls": [
-    {
-      "accessType": "READ",
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "WRITE",
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW",
-      "property": "totalPaidGain"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "admin",
-      "permission": "ALLOW",
-      "property": "find"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "admin",
-      "permission": "ALLOW",
-      "property": "create"
-    }
-  ],
-  "methods": {
-    "prototype.totalPaidGain": {
-      "accepts": [
-        {
-          "arg": "options",
-          "type": "object",
-          "http": "optionsFromRequest"
+    "name": "MMUser",
+    "base": "User",
+    "properties": {
+        "firstname": {
+            "type": "string",
+            "required": false,
+            "default": "test"
         }
-      ],
-      "returns": [
-        {
-          "arg": "paid",
-          "type": "number"
+    },
+    "validations": [],
+    "relations": {
+        "projects": {
+            "type": "hasMany",
+            "model": "Project",
+            "foreignKey": "userId"
+        },
+        "notes": {
+            "type": "hasMany",
+            "model": "Note",
+            "foreignKey": "userId"
+        },
+        "clients": {
+            "type": "hasMany",
+            "model": "Client",
+            "foreignKey": "userId"
+        }
+    },
+    "acls": [{
+            "accessType": "READ",
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW"
         },
         {
-          "arg": "invoiced",
-          "type": "number"
+            "accessType": "WRITE",
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW"
         },
         {
-          "arg": "potential",
-          "type": "number"
-        }
-      ],
-      "description": "Return the total pain gain for a given user",
-      "http": [
+            "accessType": "EXECUTE",
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW",
+            "property": "totalPaidGain"
+        },
         {
-          "path": "gains/total",
-          "verb": "get"
+            "accessType": "EXECUTE",
+            "principalType": "ROLE",
+            "principalId": "admin",
+            "permission": "ALLOW",
+            "property": "find"
         }
-      ]
+    ],
+    "methods": {
+        "prototype.totalPaidGain": {
+            "accepts": [{
+                "arg": "options",
+                "type": "object",
+                "http": "optionsFromRequest"
+            }],
+            "returns": [{
+                    "arg": "paid",
+                    "type": "number"
+                },
+                {
+                    "arg": "invoiced",
+                    "type": "number"
+                },
+                {
+                    "arg": "potential",
+                    "type": "number"
+                }
+            ],
+            "description": "Return the total pain gain for a given user",
+            "http": [{
+                "path": "gains/total",
+                "verb": "get"
+            }]
+        }
     }
-  }
 }
