@@ -1,102 +1,98 @@
 'use strict';
 
 module.exports = function(app) {
-    app.dataSources.mysql.isActual(app.models, function(err, actual) {
-        if (!actual) {
-            app.dataSources.mysql.autoupdate('AccessToken');
-            app.dataSources.mysql.autoupdate('ACL');
-            app.dataSources.mysql.autoupdate('RoleMapping');
-            app.dataSources.mysql.autoupdate('Role');
-            app.dataSources.mysql.autoupdate('Note');
-            app.dataSources.mysql.autoupdate('Gain');
-            app.dataSources.mysql.autoupdate('HistoryEntry');
-            app.dataSources.mysql.autoupdate('Task');
-            app.dataSources.mysql.autoupdate('MMUser');
-            app.dataSources.mysql.autoupdate('Project');
-            app.dataSources.mysql.autoupdate('Client');
-            app.dataSources.mysql.autoupdate('ProjectClient');
+    app.dataSources.mysql.autoupdate('AccessToken');
+    app.dataSources.mysql.autoupdate('ACL');
+    app.dataSources.mysql.autoupdate('RoleMapping');
+    app.dataSources.mysql.autoupdate('Role');
+    app.dataSources.mysql.autoupdate('Note');
+    app.dataSources.mysql.autoupdate('Gain');
+    app.dataSources.mysql.autoupdate('HistoryEntry');
+    app.dataSources.mysql.autoupdate('Task');
+    app.dataSources.mysql.autoupdate('MMUser');
+    app.dataSources.mysql.autoupdate('Project');
+    app.dataSources.mysql.autoupdate('Client');
+    app.dataSources.mysql.autoupdate('ProjectClient');
 
-            if (process.env.NODE_ENV == 'test') {
+    if (process.env.NODE_ENV == 'test') {
 
-                app.models.MMUser.create({
-                    username: 'test',
-                    email: "test@test.fr",
-                    password: "password",
-                    emailVerified: true
-                }, function(err, user) {
+        app.models.MMUser.create({
+            username: 'test',
+            email: "test@test.fr",
+            password: "password",
+            emailVerified: true
+        }, function(err, user) {
+            if (err) throw err;
+            console.log('Model created: \n', user);
+
+            app.models.Role.create({
+                name: 'admin'
+            }, function(err, role) {
+                if (err) throw err;
+
+                //make bob an admin
+                role.principals.create({
+                    principalType: app.models.RoleMapping.USER,
+                    principalId: user.id
+                }, function(err, principal) {
                     if (err) throw err;
-                    console.log('Model created: \n', user);
 
-                    app.models.Role.create({
-                        name: 'admin'
-                    }, function(err, role) {
-                        if (err) throw err;
-
-                        //make bob an admin
-                        role.principals.create({
-                            principalType: app.models.RoleMapping.USER,
-                            principalId: user.id
-                        }, function(err, principal) {
-                            if (err) throw err;
-
-                            console.log('Roles créés: \n', principal);
-                        });
-                    });
-
-                    app.models.Client.create([{
-                            name: "WeAreLearning",
-                            user: user
-                        },
-                        {
-                            name: "Freeness",
-                            user: user
-                        }
-                    ], function(err, clients) {
-                        if (err) throw err;
-                        console.log('Models created: \n', clients);
-
-
-                        app.models.Project.create([{
-                            name: 'WeAreLearning',
-                            user: user
-                        }, {
-                            name: 'Freness',
-                            user: user,
-                        }, {
-                            name: 'Caffe Artigiano',
-                            user: user
-                        }, ], function(err, projects) {
-                            if (err) throw err;
-
-                            console.log('Models created: \n', projects);
-
-                            app.models.Gain.create([{
-                                title: "testgain",
-                                budget: 1000,
-                                projectId: projects[0].id
-                            }, {
-                                title: "testgain2",
-                                budget: 2000,
-                                devis: true,
-                                projectId: projects[1].id
-                            }]);
-
-
-
-                            app.models.ProjectClient.create([{
-                                project: projects[0],
-                                client: clients[0]
-                            }], function(err, clientproject) {
-                                if (err) throw err;
-
-                                console.log('Models created: \n', clientproject);
-
-                            });
-                        });
-                    });
-
+                    console.log('Roles créés: \n', principal);
                 });
-            }
-        }
-    });
+            });
+
+            app.models.Client.create([{
+                    name: "WeAreLearning",
+                    user: user
+                },
+                {
+                    name: "Freeness",
+                    user: user
+                }
+            ], function(err, clients) {
+                if (err) throw err;
+                console.log('Models created: \n', clients);
+
+
+                app.models.Project.create([{
+                    name: 'WeAreLearning',
+                    user: user
+                }, {
+                    name: 'Freness',
+                    user: user,
+                }, {
+                    name: 'Caffe Artigiano',
+                    user: user
+                }, ], function(err, projects) {
+                    if (err) throw err;
+
+                    console.log('Models created: \n', projects);
+
+                    app.models.Gain.create([{
+                        title: "testgain",
+                        budget: 1000,
+                        projectId: projects[0].id
+                    }, {
+                        title: "testgain2",
+                        budget: 2000,
+                        devis: true,
+                        projectId: projects[1].id
+                    }]);
+
+
+
+                    app.models.ProjectClient.create([{
+                        project: projects[0],
+                        client: clients[0]
+                    }], function(err, clientproject) {
+                        if (err) throw err;
+
+                        console.log('Models created: \n', clientproject);
+
+                    });
+                });
+            });
+
+        });
+    }
 };
