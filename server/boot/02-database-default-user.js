@@ -7,6 +7,8 @@ module.exports = function(app) {
     if (username && email && password) {
         app.models.MMUser.findOrCreate({ where: { "email": email } }, {
             username: username,
+            firstname: "admin",
+            lastname: "admin",
             email: email,
             password: password
         }, function(err, user) {
