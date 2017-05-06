@@ -12,5 +12,7 @@ module.exports = function(app) {
     app.dataSources.mysql.autoupdate('MMUser');
     app.dataSources.mysql.autoupdate('Project');
     app.dataSources.mysql.autoupdate('Client');
+    app.dataSources.mysql.autoupdate('Devis');
     app.dataSources.mysql.autoupdate('ProjectClient');
+    app.dataSources.mysql.autoupdate('Address');
 }

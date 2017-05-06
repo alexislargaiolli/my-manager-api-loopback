@@ -1,6 +1,9 @@
 {
     "name": "MMUser",
     "base": "User",
+    "mixins": {
+        "Timestamp": {}
+    },
     "properties": {
         "firstname": {
             "type": "string",
@@ -27,6 +30,11 @@
             "type": "hasMany",
             "model": "Client",
             "foreignKey": "userId"
+        },
+        "addresses": {
+            "type": "hasMany",
+            "model": "Address",
+            "foreignKey": ""
         }
     },
     "acls": [{

@@ -1,0 +1,74 @@
+{
+    "name": "Devis",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "mixins": {
+        "Timestamp": {}
+    },
+    "properties": {
+        "createDate": {
+            "type": "date",
+            "required": true,
+            "defaultFn": "now"
+        },
+        "devisId": {
+            "type": "string",
+            "required": true
+        },
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "budget": {
+            "type": "number",
+            "required": true
+        },
+        "acceptedDate": {
+            "type": "date"
+        },
+        "paidDate": {
+            "type": "date"
+        },
+        "state": {
+            "type": "number",
+            "description": "0 draf, 1 pending, 2 accepted, 3 refused, 4 paid",
+            "default": 0
+        }
+    },
+    "validations": [],
+    "relations": {
+        "project": {
+            "type": "belongsTo",
+            "model": "Project",
+            "foreignKey": ""
+        },
+        "clientBillingAddress": {
+            "type": "embedsOne",
+            "model": "Address",
+            "property": "clientBillingAddress",
+            "options": {
+                "validate": true,
+                "forceId": false
+            }
+        },
+        "userBillingAddress": {
+            "type": "embedsOne",
+            "model": "Address",
+            "property": "userBillingAddress",
+            "options": {
+                "validate": true,
+                "forceId": false
+            }
+        }
+    },
+    "acls": [{
+        "accessType": "*",
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "DENY"
+    }],
+    "methods": {}
+}
