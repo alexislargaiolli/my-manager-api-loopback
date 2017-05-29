@@ -2,13 +2,15 @@
   "name": "Address",
   "base": "Model",
   "idInjection": true,
-  "options": {
-    "validateUpsert": true
-  },
   "mixins": {
     "Timestamp": {}
   },
   "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuid"
+    },
     "street": {
       "type": "string",
       "required": true
@@ -23,18 +25,7 @@
     }
   },
   "validations": [],
-  "relations": {
-    "mMUser": {
-      "type": "belongsTo",
-      "model": "MMUser",
-      "foreignKey": ""
-    },
-    "client": {
-      "type": "belongsTo",
-      "model": "Client",
-      "foreignKey": ""
-    }
-  },
+  "relations": {},
   "acls": [],
   "methods": {}
 }

@@ -4,16 +4,7 @@
     "mixins": {
         "Timestamp": {}
     },
-    "properties": {
-        "firstname": {
-            "type": "string",
-            "required": true
-        },
-        "lastname": {
-            "type": "string",
-            "required": true
-        }
-    },
+    "properties": {},
     "validations": [],
     "relations": {
         "projects": {
@@ -31,13 +22,18 @@
             "model": "Client",
             "foreignKey": "userId"
         },
-        "addresses": {
-            "type": "hasMany",
-            "model": "Address",
-            "foreignKey": ""
+        "profile": {
+            "type": "hasOne",
+            "model": "Profile",
+            "foreignKey": "userId"
         }
     },
     "acls": [{
+            "accessType": "*",
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "DENY"
+        }, {
             "accessType": "READ",
             "principalType": "ROLE",
             "principalId": "$owner",
@@ -57,11 +53,30 @@
             "property": "totalPaidGain"
         },
         {
-            "accessType": "EXECUTE",
+            "accessType": "READ",
             "principalType": "ROLE",
             "principalId": "admin",
             "permission": "ALLOW",
             "property": "find"
+        }, {
+            "accessType": "WRITE",
+            "principalType": "ROLE",
+            "principalId": "admin",
+            "permission": "ALLOW",
+            "property": "create"
+        }, {
+            "accessType": "WRITE",
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "DENY",
+            "property": "upsert"
+        },
+        {
+            "accessType": "WRITE",
+            "principalType": "ROLE",
+            "principalId": "admin",
+            "permission": "ALLOW",
+            "property": "upsert"
         }
     ],
     "methods": {

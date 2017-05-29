@@ -1,53 +1,55 @@
 {
-    "name": "Gain",
-    "base": "PersistedModel",
-    "idInjection": true,
-    "options": {
-        "validateUpsert": true
+  "name": "Gain",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": {}
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
     },
-    "mixins": {
-        "Timestamp": {}
+    "budget": {
+      "type": "number"
     },
-    "properties": {
-        "title": {
-            "type": "string",
-            "required": true
-        },
-        "budget": {
-            "type": "number"
-        },
-        "dueDate": {
-            "type": "date"
-        },
-        "paymentDate": {
-            "type": "date"
-        },
-        "devis": {
-            "type": "boolean",
-            "default": false
-        },
-        "invoiced": {
-            "type": "boolean",
-            "default": false
-        },
-        "paid": {
-            "type": "boolean",
-            "default": false
-        }
+    "dueDate": {
+      "type": "date"
     },
-    "validations": [],
-    "relations": {
-        "project": {
-            "type": "belongsTo",
-            "model": "Project",
-            "foreignKey": ""
-        }
+    "paymentDate": {
+      "type": "date"
     },
-    "acls": [{
-        "accessType": "*",
-        "principalType": "ROLE",
-        "principalId": "$everyone",
-        "permission": "DENY"
-    }],
-    "methods": {}
+    "devis": {
+      "type": "boolean",
+      "default": false
+    },
+    "invoiced": {
+      "type": "boolean",
+      "default": false
+    },
+    "paid": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "project": {
+      "type": "belongsTo",
+      "model": "Project",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
 }

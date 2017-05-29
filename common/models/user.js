@@ -2,6 +2,7 @@
 var app = require('../../server/server');
 
 module.exports = function(MMUser) {
+
     /**
      * Return the total pain gain for a given user
      * @param {Function(Error)} callback

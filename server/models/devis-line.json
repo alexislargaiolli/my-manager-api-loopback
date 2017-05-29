@@ -1,0 +1,35 @@
+{
+  "name": "DevisLine",
+  "base": "Model",
+  "idInjection": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuid"
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "quantity": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    },
+    "unitPrice": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "totalPrice": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,42 @@
+{
+    "name": "Profile",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "properties": {
+        "lastname": {
+            "type": "string",
+            "required": true
+        },
+        "firstname": {
+            "type": "string",
+            "required": true
+        }
+    },
+    "validations": [],
+    "relations": {
+        "user": {
+            "type": "belongsTo",
+            "model": "MMUser",
+            "foreignKey": "userId"
+        },
+        "billingAddresses": {
+            "type": "embedsMany",
+            "model": "Address",
+            "property": "addresses",
+            "options": {
+                "validate": true,
+                "forceId": false
+            }
+        }
+    },
+    "acls": [{
+        "accessType": "*",
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "DENY"
+    }],
+    "methods": {}
+}

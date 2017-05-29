@@ -14,5 +14,11 @@ module.exports = function(app) {
     app.dataSources.mysql.autoupdate('Client');
     app.dataSources.mysql.autoupdate('Devis');
     app.dataSources.mysql.autoupdate('ProjectClient');
-    app.dataSources.mysql.autoupdate('Address');
+    app.dataSources.mysql.autoupdate('Profile');
+
+    app.models.MMUser.nestRemoting('projects');
+    app.models.MMUser.nestRemoting('profile');
+    app.models.MMUser.nestRemoting('clients');
+    app.models.Project.nestRemoting('tasks');
+    app.models.Project.nestRemoting('clients');
 }

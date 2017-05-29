@@ -33,10 +33,14 @@
       "model": "MMUser",
       "foreignKey": "userId"
     },
-    "addresses": {
-      "type": "hasMany",
+    "billingAddresses": {
+      "type": "embedsMany",
       "model": "Address",
-      "foreignKey": ""
+      "property": "addresses",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
     }
   },
   "acls": [

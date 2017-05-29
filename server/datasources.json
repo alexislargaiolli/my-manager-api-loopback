@@ -11,5 +11,9 @@
     "name": "mysql",
     "user": "mymanager",
     "connector": "mysql"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
   }
 }
