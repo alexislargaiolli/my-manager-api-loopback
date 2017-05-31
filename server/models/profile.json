@@ -13,6 +13,9 @@
         "firstname": {
             "type": "string",
             "required": true
+        },
+        "siret": {
+            "type": "string"
         }
     },
     "validations": [],

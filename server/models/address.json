@@ -1,31 +1,31 @@
 {
-  "name": "Address",
-  "base": "Model",
-  "idInjection": true,
-  "mixins": {
-    "Timestamp": {}
-  },
-  "properties": {
-    "id": {
-      "type": "string",
-      "id": true,
-      "defaultFn": "uuid"
+    "name": "Address",
+    "base": "Model",
+    "idInjection": true,
+    "mixins": {
+        "Timestamp": {}
     },
-    "street": {
-      "type": "string",
-      "required": true
+    "properties": {
+        "id": {
+            "type": "string",
+            "id": true,
+            "defaultFn": "uuid"
+        },
+        "street": {
+            "type": "string"
+        },
+        "complement": {
+            "type": "string"
+        },
+        "city": {
+            "type": "string"
+        },
+        "zipcode": {
+            "type": "string"
+        }
     },
-    "city": {
-      "type": "string",
-      "required": true
-    },
-    "zipcode": {
-      "type": "string",
-      "required": true
-    }
-  },
-  "validations": [],
-  "relations": {},
-  "acls": [],
-  "methods": {}
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
 }

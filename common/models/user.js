@@ -28,13 +28,13 @@ module.exports = function(MMUser) {
             }
         }).then(devis => {
             const totalPaid = devis.reduce((prevVal, current) => {
-                return prevVal + (current.state === 4 ? current.budget : 0);
+                return prevVal + (current.state === 4 ? current.totalPrice : 0);
             }, 0);
             const totalInvoiced = devis.reduce((prevVal, current) => {
-                return prevVal + (current.state === 2 ? current.budget : 0);
+                return prevVal + (current.state === 2 ? current.totalPrice : 0);
             }, 0);
             const totalPotential = devis.reduce((prevVal, current) => {
-                return prevVal + (current.state == 1 ? current.budget : 0);
+                return prevVal + (current.state == 1 ? current.totalPrice : 0);
             }, 0);
             callback(null, totalPaid, totalInvoiced, totalPotential);
         });
