@@ -101,7 +101,7 @@
             ],
             "description": "Return the total pain gain for a given user",
             "http": [{
-                "path": "gains/total",
+                "path": "totals",
                 "verb": "get"
             }]
         }
