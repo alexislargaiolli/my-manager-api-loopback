@@ -1,109 +1,118 @@
 {
-    "name": "MMUser",
-    "base": "User",
-    "mixins": {
-        "Timestamp": {}
+  "name": "MMUser",
+  "base": "User",
+  "mixins": {
+    "Timestamp": {}
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "projects": {
+      "type": "hasMany",
+      "model": "Project",
+      "foreignKey": "userId"
     },
-    "properties": {},
-    "validations": [],
-    "relations": {
-        "projects": {
-            "type": "hasMany",
-            "model": "Project",
-            "foreignKey": "userId"
-        },
-        "notes": {
-            "type": "hasMany",
-            "model": "Note",
-            "foreignKey": "userId"
-        },
-        "clients": {
-            "type": "hasMany",
-            "model": "Client",
-            "foreignKey": "userId"
-        },
-        "profile": {
-            "type": "hasOne",
-            "model": "Profile",
-            "foreignKey": "userId"
-        }
+    "notes": {
+      "type": "hasMany",
+      "model": "Note",
+      "foreignKey": "userId"
     },
-    "acls": [{
-            "accessType": "*",
-            "principalType": "ROLE",
-            "principalId": "$everyone",
-            "permission": "DENY"
-        }, {
-            "accessType": "READ",
-            "principalType": "ROLE",
-            "principalId": "$owner",
-            "permission": "ALLOW"
-        },
-        {
-            "accessType": "WRITE",
-            "principalType": "ROLE",
-            "principalId": "$owner",
-            "permission": "ALLOW"
-        },
-        {
-            "accessType": "EXECUTE",
-            "principalType": "ROLE",
-            "principalId": "$owner",
-            "permission": "ALLOW",
-            "property": "totalPaidGain"
-        },
-        {
-            "accessType": "READ",
-            "principalType": "ROLE",
-            "principalId": "admin",
-            "permission": "ALLOW",
-            "property": "find"
-        }, {
-            "accessType": "WRITE",
-            "principalType": "ROLE",
-            "principalId": "admin",
-            "permission": "ALLOW",
-            "property": "create"
-        }, {
-            "accessType": "WRITE",
-            "principalType": "ROLE",
-            "principalId": "$everyone",
-            "permission": "DENY",
-            "property": "upsert"
-        },
-        {
-            "accessType": "WRITE",
-            "principalType": "ROLE",
-            "principalId": "admin",
-            "permission": "ALLOW",
-            "property": "upsert"
-        }
-    ],
-    "methods": {
-        "prototype.totalPaidGain": {
-            "accepts": [{
-                "arg": "options",
-                "type": "object",
-                "http": "optionsFromRequest"
-            }],
-            "returns": [{
-                    "arg": "paid",
-                    "type": "number"
-                },
-                {
-                    "arg": "invoiced",
-                    "type": "number"
-                },
-                {
-                    "arg": "potential",
-                    "type": "number"
-                }
-            ],
-            "description": "Return the total pain gain for a given user",
-            "http": [{
-                "path": "totals",
-                "verb": "get"
-            }]
-        }
+    "clients": {
+      "type": "hasMany",
+      "model": "Client",
+      "foreignKey": "userId"
+    },
+    "profile": {
+      "type": "hasOne",
+      "model": "Profile",
+      "foreignKey": "userId"
     }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "totalPaidGain"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY",
+      "property": "upsert"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "upsert"
+    }
+  ],
+  "methods": {
+    "prototype.totalPaidGain": {
+      "accepts": [
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "paid",
+          "type": "number"
+        },
+        {
+          "arg": "invoiced",
+          "type": "number"
+        },
+        {
+          "arg": "potential",
+          "type": "number"
+        }
+      ],
+      "description": "Return the total pain gain for a given user",
+      "http": [
+        {
+          "path": "totals",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

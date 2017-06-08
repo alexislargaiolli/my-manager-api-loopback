@@ -15,6 +15,7 @@ module.exports = function(app) {
     app.dataSources.mysql.autoupdate('Devis');
     app.dataSources.mysql.autoupdate('ProjectClient');
     app.dataSources.mysql.autoupdate('Profile');
+    app.dataSources.mysql.autoupdate('Invoice');
 
     app.models.MMUser.nestRemoting('projects');
     app.models.MMUser.nestRemoting('profile');

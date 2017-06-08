@@ -1,103 +1,110 @@
 {
-  "name": "Project",
-  "base": "PersistedModel",
-  "idInjection": true,
-  "options": {
-    "validateUpsert": true
-  },
-  "mixins": {
-    "Timestamp": {}
-  },
-  "properties": {
-    "name": {
-      "type": "string",
-      "required": true
+    "name": "Project",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
     },
-    "plannedStartDate": {
-      "type": "date"
+    "mixins": {
+        "Timestamp": {}
     },
-    "startDate": {
-      "type": "date"
+    "properties": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "description": {
+            "type": "string"
+        },
+        "plannedStartDate": {
+            "type": "date"
+        },
+        "startDate": {
+            "type": "date"
+        },
+        "plannedEndDate": {
+            "type": "date"
+        },
+        "endDate": {
+            "type": "date"
+        },
+        "progress": {
+            "type": "number",
+            "default": 0
+        },
+        "state": {
+            "type": "number",
+            "default": 0
+        }
     },
-    "plannedEndDate": {
-      "type": "date"
+    "validations": [],
+    "relations": {
+        "clients": {
+            "type": "hasMany",
+            "model": "Client",
+            "foreignKey": "",
+            "through": "ProjectClient"
+        },
+        "notes": {
+            "type": "hasMany",
+            "model": "Note",
+            "foreignKey": "projectId"
+        },
+        "user": {
+            "type": "belongsTo",
+            "model": "MMUser",
+            "foreignKey": "userId"
+        },
+        "gains": {
+            "type": "hasMany",
+            "model": "Gain",
+            "foreignKey": "projectId"
+        },
+        "historyEntries": {
+            "type": "hasMany",
+            "model": "HistoryEntry",
+            "foreignKey": "projectId"
+        },
+        "tasks": {
+            "type": "hasMany",
+            "model": "Task",
+            "foreignKey": "projectId"
+        },
+        "devis": {
+            "type": "hasMany",
+            "model": "Devis",
+            "foreignKey": ""
+        },
+        "invoices": {
+            "type": "hasMany",
+            "model": "Invoice",
+            "foreignKey": ""
+        }
     },
-    "endDate": {
-      "type": "date"
-    },
-    "progress": {
-      "type": "number",
-      "default": 0
-    },
-    "state": {
-      "type": "number",
-      "default": 0
-    }
-  },
-  "validations": [],
-  "relations": {
-    "clients": {
-      "type": "hasMany",
-      "model": "Client",
-      "foreignKey": "",
-      "through": "ProjectClient"
-    },
-    "notes": {
-      "type": "hasMany",
-      "model": "Note",
-      "foreignKey": "projectId"
-    },
-    "user": {
-      "type": "belongsTo",
-      "model": "MMUser",
-      "foreignKey": "userId"
-    },
-    "gains": {
-      "type": "hasMany",
-      "model": "Gain",
-      "foreignKey": "projectId"
-    },
-    "historyEntries": {
-      "type": "hasMany",
-      "model": "HistoryEntry",
-      "foreignKey": "projectId"
-    },
-    "tasks": {
-      "type": "hasMany",
-      "model": "Task",
-      "foreignKey": "projectId"
-    },
-    "devis": {
-      "type": "hasMany",
-      "model": "Devis",
-      "foreignKey": ""
-    }
-  },
-  "acls": [
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "DENY"
-    },
-    {
-      "accessType": "READ",
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "WRITE",
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW"
-    }
-  ],
-  "methods": {}
+    "acls": [{
+            "accessType": "*",
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "DENY"
+        },
+        {
+            "accessType": "READ",
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW"
+        },
+        {
+            "accessType": "WRITE",
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW"
+        },
+        {
+            "accessType": "EXECUTE",
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW"
+        }
+    ],
+    "methods": {}
 }
