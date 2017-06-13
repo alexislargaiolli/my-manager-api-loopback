@@ -94,19 +94,23 @@
       ],
       "returns": [
         {
-          "arg": "paid",
+          "arg": "waitingDevis",
           "type": "number"
         },
         {
-          "arg": "invoiced",
+          "arg": "acceptedDevis",
           "type": "number"
         },
         {
-          "arg": "potential",
+          "arg": "waitingInvoices",
+          "type": "number"
+        },
+        {
+          "arg": "paidInvoices",
           "type": "number"
         }
       ],
-      "description": "Return the total pain gain for a given user",
+      "description": "Return the gain summary for a given user",
       "http": [
         {
           "path": "totals",

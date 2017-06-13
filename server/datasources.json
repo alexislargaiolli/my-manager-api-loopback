@@ -1,19 +1,33 @@
 {
-  "db": {
-    "name": "db",
-    "connector": "memory"
-  },
-  "mysql": {
-    "host": "localhost",
-    "port": 3306,
-    "database": "mymanager",
-    "password": "mymanager",
-    "name": "mysql",
-    "user": "mymanager",
-    "connector": "mysql"
-  },
-  "transient": {
-    "name": "transient",
-    "connector": "transient"
-  }
+    "db": {
+        "name": "db",
+        "connector": "memory"
+    },
+    "mysql": {
+        "host": "localhost",
+        "port": 3306,
+        "database": "mymanager",
+        "password": "mymanager",
+        "name": "mysql",
+        "user": "mymanager",
+        "connector": "mysql"
+    },
+    "transient": {
+        "name": "transient",
+        "connector": "transient"
+    },
+    "emailDS": {
+        "name": "emailDS",
+        "connector": "mail",
+        "transports": [{
+            "type": "SMTP",
+            "host": "smtp.gmail.com",
+            "secure": true,
+            "port": 465,
+            "auth": {
+                "user": "my.freelance.manager@gmail.com",
+                "pass": "freelance21"
+            }
+        }]
+    }
 }

@@ -1,99 +1,101 @@
 {
-    "name": "Invoice",
-    "base": "PersistedModel",
-    "idInjection": true,
-    "options": {
-        "validateUpsert": true
+  "name": "Invoice",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": {}
+  },
+  "properties": {
+    "createDate": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
     },
-    "mixins": {
-        "Timestamp": {}
+    "validityDate": {
+      "type": "date"
     },
-    "properties": {
-        "createDate": {
-            "type": "date",
-            "required": true,
-            "defaultFn": "now"
-        },
-        "validityDate": {
-            "type": "date"
-        },
-        "invoiceId": {
-            "type": "string",
-            "required": true
-        },
-        "title": {
-            "type": "string",
-            "required": true
-        },
-        "siret": {
-            "type": "string"
-        },
-        "totalPrice": {
-            "type": "number",
-            "required": true,
-            "default": 0
-        },
-        "paidDate": {
-            "type": "date"
-        },
-        "state": {
-            "type": "number",
-            "description": "0 draf, 1 pending, 2 paid, 3 abandoned",
-            "default": 0
-        },
-        "clientName": {
-            "type": "string"
-        },
-        "userName": {
-            "type": "string"
-        },
-        "userPhone": {
-            "type": "string"
-        },
-        "userMail": {
-            "type": "string"
-        }
+    "invoiceId": {
+      "type": "string",
+      "required": true
     },
-    "validations": [],
-    "relations": {
-        "project": {
-            "type": "belongsTo",
-            "model": "Project",
-            "foreignKey": ""
-        },
-        "devisLines": {
-            "type": "embedsMany",
-            "model": "DevisLine",
-            "property": "lines",
-            "options": {
-                "validate": true,
-                "forceId": false
-            }
-        },
-        "clientBillingAddress": {
-            "type": "embedsOne",
-            "model": "Address",
-            "property": "clientAddress",
-            "options": {
-                "validate": true,
-                "forceId": false
-            }
-        },
-        "userBillingAddress": {
-            "type": "embedsOne",
-            "model": "Address",
-            "property": "userAddress",
-            "options": {
-                "validate": true,
-                "forceId": false
-            }
-        }
+    "title": {
+      "type": "string",
+      "required": true
     },
-    "acls": [{
-        "accessType": "*",
-        "principalType": "ROLE",
-        "principalId": "$everyone",
-        "permission": "DENY"
-    }],
-    "methods": {}
+    "siret": {
+      "type": "string"
+    },
+    "totalPrice": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "paidDate": {
+      "type": "date"
+    },
+    "state": {
+      "type": "number",
+      "description": "0 draf, 1 pending, 2 paid, 3 abandoned",
+      "default": 0
+    },
+    "clientName": {
+      "type": "string"
+    },
+    "userName": {
+      "type": "string"
+    },
+    "userPhone": {
+      "type": "string"
+    },
+    "userMail": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "project": {
+      "type": "belongsTo",
+      "model": "Project",
+      "foreignKey": ""
+    },
+    "devisLines": {
+      "type": "embedsMany",
+      "model": "DevisLine",
+      "property": "lines",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "clientBillingAddress": {
+      "type": "embedsOne",
+      "model": "Address",
+      "property": "clientAddress",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "userBillingAddress": {
+      "type": "embedsOne",
+      "model": "Address",
+      "property": "userAddress",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
 }
