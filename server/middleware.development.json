@@ -1,10 +1,20 @@
 {
-  "final:after": {
-    "strong-error-handler": {
-      "params": {
-        "debug": true,
-        "log": true
-      }
+    "final:after": {
+        "strong-error-handler": {
+            "params": {
+                "debug": true,
+                "log": true
+            }
+        }
+    },
+    "initial": {
+        "compression": {},
+        "cors": {
+            "params": {
+                "origin": "http://localhost:4200",
+                "credentials": true,
+                "maxAge": 86400
+            }
+        }
     }
-  }
 }

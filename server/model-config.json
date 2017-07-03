@@ -1,110 +1,110 @@
 {
-    "_meta": {
-        "sources": [
-            "loopback/common/models",
-            "loopback/server/models",
-            "../common/models",
-            "./models"
-        ],
-        "mixins": [
-            "loopback/common/mixins",
-            "loopback/server/mixins",
-            "../common/mixins",
-            "./mixins"
-        ]
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "MMUser": {
+    "dataSource": "mysql",
+    "options": {
+      "emailVerificationRequired": true
     },
-    "MMUser": {
-        "dataSource": "mysql",
-        "options": {
-            "emailVerificationRequired": true
-        },
-        "relations": {
-            "user": {
-                "type": "hasMany",
-                "model": "accessToken",
-                "foreignKey": "userId"
-            }
-        }
-    },
-    "AccessToken": {
-        "dataSource": "mysql",
-        "public": false,
-        "relations": {
-            "user": {
-                "type": "belongsTo",
-                "model": "mmuser",
-                "foreignKey": "userId"
-            }
-        }
-    },
-    "ACL": {
-        "dataSource": "mysql",
-        "public": false
-    },
-    "RoleMapping": {
-        "dataSource": "mysql",
-        "public": false,
-        "options": {
-            "strictObjectIDCoercion": true
-        }
-    },
-    "Role": {
-        "dataSource": "mysql",
-        "public": false
-    },
-    "Email": {
-        "dataSource": "emailDS"
-    },
-    "Project": {
-        "dataSource": "mysql",
-        "public": true
-    },
-    "Client": {
-        "dataSource": "mysql",
-        "public": true
-    },
-    "Gain": {
-        "dataSource": "mysql",
-        "public": true
-    },
-    "HistoryEntry": {
-        "dataSource": "mysql",
-        "public": true
-    },
-    "Note": {
-        "dataSource": "mysql",
-        "public": true
-    },
-    "Task": {
-        "dataSource": "mysql",
-        "public": true
-    },
-    "Collaboration": {
-        "dataSource": "mysql",
-        "public": false
-    },
-    "ProjectClient": {
-        "dataSource": "mysql",
-        "public": false
-    },
-    "Devis": {
-        "dataSource": "mysql",
-        "public": true
-    },
-    "Address": {
-        "dataSource": "transient",
-        "public": false
-    },
-    "DevisLine": {
-        "dataSource": "transient",
-        "public": false
-    },
-    "Profile": {
-        "dataSource": "mysql",
-        "public": true
-    },
-    "Invoice": {
-        "dataSource": "mysql",
-        "public": true
+    "relations": {
+      "user": {
+        "type": "hasMany",
+        "model": "accessToken",
+        "foreignKey": "userId"
+      }
     }
+  },
+  "AccessToken": {
+    "dataSource": "mysql",
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "mmuser",
+        "foreignKey": "userId"
+      }
+    }
+  },
+  "ACL": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mysql",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "Email": {
+    "dataSource": "emailDS"
+  },
+  "Project": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Client": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Gain": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "HistoryEntry": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Note": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Task": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Collaboration": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "ProjectClient": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "Devis": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Address": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "DevisLine": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "Profile": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Invoice": {
+    "dataSource": "mysql",
+    "public": true
+  }
 }
