@@ -1,52 +1,54 @@
 {
-    "name": "HistoryEntry",
-    "base": "PersistedModel",
-    "idInjection": true,
-    "options": {
-        "validateUpsert": true
+  "name": "HistoryEntry",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": {}
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
     },
-    "mixins": {
-        "Timestamp": {}
+    "content": {
+      "type": "string"
     },
-    "properties": {
-        "title": {
-            "type": "string",
-            "required": true
-        },
-        "content": {
-            "type": "string"
-        },
-        "date": {
-            "type": "date",
-            "defaultFn": "now"
-        },
-        "type": {
-            "type": "string"
-        }
+    "date": {
+      "type": "date",
+      "defaultFn": "now"
     },
-    "validations": [],
-    "relations": {
-        "project": {
-            "type": "belongsTo",
-            "model": "Project",
-            "foreignKey": "projectId"
-        },
-        "devis": {
-            "type": "hasOne",
-            "model": "Devis",
-            "foreignKey": ""
-        },
-        "invoices": {
-            "type": "hasOne",
-            "model": "Invoice",
-            "foreignKey": ""
-        }
+    "type": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "project": {
+      "type": "belongsTo",
+      "model": "Project",
+      "foreignKey": "projectId"
     },
-    "acls": [{
-        "accessType": "*",
-        "principalType": "ROLE",
-        "principalId": "$everyone",
-        "permission": "DENY"
-    }],
-    "methods": {}
+    "devis": {
+      "type": "hasOne",
+      "model": "Devis",
+      "foreignKey": ""
+    },
+    "invoices": {
+      "type": "hasOne",
+      "model": "Invoice",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
 }

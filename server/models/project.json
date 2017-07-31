@@ -35,6 +35,9 @@
     "state": {
       "type": "number",
       "default": 0
+    },
+    "stateMessage": {
+      "type": "string"
     }
   },
   "validations": [],
@@ -73,16 +76,15 @@
     "devis": {
       "type": "hasMany",
       "model": "Devis",
-      "foreignKey": ""
+      "foreignKey": "projectId"
     },
     "invoices": {
       "type": "hasMany",
       "model": "Invoice",
-      "foreignKey": ""
+      "foreignKey": "projectId"
     }
   },
-  "acls": [
-    {
+  "acls": [{
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",

@@ -26,6 +26,16 @@
       "type": "hasOne",
       "model": "Profile",
       "foreignKey": "userId"
+    },
+    "devis": {
+      "type": "hasMany",
+      "model": "Devis",
+      "foreignKey": "userId"
+    },
+    "invoices": {
+      "type": "hasMany",
+      "model": "Invoice",
+      "foreignKey": "userId"
     }
   },
   "acls": [

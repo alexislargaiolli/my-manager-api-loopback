@@ -62,7 +62,7 @@
     "project": {
       "type": "belongsTo",
       "model": "Project",
-      "foreignKey": ""
+      "foreignKey": "projectId"
     },
     "devisLines": {
       "type": "embedsMany",
@@ -90,6 +90,11 @@
         "validate": true,
         "forceId": false
       }
+    },
+    "owner": {
+      "type": "belongsTo",
+      "model": "MMUser",
+      "foreignKey": "userId"
     }
   },
   "acls": [
