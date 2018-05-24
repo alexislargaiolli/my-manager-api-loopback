@@ -23,6 +23,9 @@
     },
     "siret": {
       "type": "string"
+    },
+    "tvaIntra": {
+      "type": "string"
     }
   },
   "validations": [],

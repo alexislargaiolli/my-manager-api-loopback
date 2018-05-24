@@ -28,6 +28,9 @@
     "siret": {
       "type": "string"
     },
+    "tvaIntra": {
+      "type": "string"
+    },
     "totalPrice": {
       "type": "number",
       "required": true,
@@ -55,6 +58,18 @@
     },
     "userMail": {
       "type": "string"
+    },
+    "tvaActive": {
+      "type": "boolean",
+      "default": false
+    },
+    "totalTVA": {
+      "type": "number",
+      "default": 0
+    },
+    "totalNet": {
+      "type": "number",
+      "default": 0
     }
   },
   "validations": [],
