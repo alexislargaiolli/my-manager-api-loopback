@@ -96,8 +96,11 @@ module.exports = function (MMUser) {
         const invoicesTotalPaid = invoices.reduce((prevVal, current) => {
           return prevVal + (current.state === 2 ? current.totalPrice : 0);
         }, 0);
+        const invoicesTotalToDeclare = invoices.reduce((prevVal, current) => {
+          return prevVal + (current.state === 2 && !current.declared ? current.totalPrice : 0);
+        }, 0);
 
-        callback(null, totalDevisWaining, totalDevisAccepted, invoicesTotalToPaid, invoicesTotalPaid);
+        callback(null, totalDevisWaining, totalDevisAccepted, invoicesTotalToPaid, invoicesTotalPaid, invoicesTotalToDeclare);
       });
     });
   };

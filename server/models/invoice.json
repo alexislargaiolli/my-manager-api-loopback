@@ -67,6 +67,10 @@
     "totalNet": {
       "type": "number",
       "default": 0
+    },
+    "declared": {
+      "type": "boolean",
+      "default": false
     }
   },
   "validations": [],

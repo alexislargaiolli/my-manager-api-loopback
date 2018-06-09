@@ -126,6 +126,10 @@
         {
           "arg": "paidInvoices",
           "type": "number"
+        },
+        {
+          "arg": "toDeclareInvoices",
+          "type": "number"
         }
       ],
       "description": "Return the gain summary for a given user",
