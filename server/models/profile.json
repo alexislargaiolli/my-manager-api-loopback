@@ -26,6 +26,9 @@
     },
     "tvaIntra": {
       "type": "string"
+    },
+    "startFiscalYear": {
+      "type": "date"
     }
   },
   "validations": [],

@@ -63,13 +63,16 @@ module.exports = function (MMUser) {
    * @param {Function(Error)} callback
    */
 
-  MMUser.prototype.totalPaidGain = function (options, callback) {
+  MMUser.prototype.totalPaidGain = function (options, from, to, callback) {
     const token = options && options.accessToken;
     const userId = token && token.userId;
 
     app.models.Devis.find({
       where: {
-        userId: userId
+        userId: userId,
+        createDate: {
+          gte: from
+        }
       }
     }).then(devis => {
       const totalDevisWaining = devis.reduce((prevVal, current) => {
@@ -81,7 +84,10 @@ module.exports = function (MMUser) {
 
       app.models.Invoice.find({
         where: {
-          userId: userId
+          userId: userId,
+          createDate: {
+            gte: from
+          }
         }
       }).then(invoices => {
         const invoicesTotalToPaid = invoices.reduce((prevVal, current) => {
